@@ -1,4 +1,4 @@
-// 01_simple.ino
+// 02_simple.ino
 
 // Example ino file provided with DelayExec library.
 
