@@ -34,7 +34,7 @@ FAILED=0
 cd ..
 
 START=1
-STOP=1
+STOP=2
 if [ -n "${1:-}" ]; then
     START="$1";
     STOP="$1";
@@ -50,6 +50,8 @@ for ((i=START; i<=STOP; i++)); do
 
     if [ "${i}" -le 1 ]; then
         cd testplan/main
+    elif [ "${i}" -le 2 ]; then
+        cd testplan/main2
     else
         echo "Unknown testplan number, aborted."
         exit 99

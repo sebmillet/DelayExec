@@ -23,10 +23,16 @@
 
 #include <Arduino.h>
 
+#define DELAYEXEC_COUNT // FIXME
+
 // ****************************************************************************
 // DELAYEXEC_TESTPLAN *********************************************************
 #if DELAYEXEC_TESTPLAN == 1
 #define DELAYEXEC_COUNT
+
+#elif DELAYEXEC_TESTPLAN == 2
+#define DELAYEXEC_COUNT
+#define DELAYEXEC_TEST_RESET
 
 #else // DELAYEXEC_TESTPLAN
 
@@ -95,6 +101,8 @@ class DelayExec {
 
         virtual int set_task(unsigned long delay,
                 void (*func)(void *data), void *data, bool respawn);
+
+        void delete_all_tasks();
 };
 
 #endif // _DELAYEXEC_H

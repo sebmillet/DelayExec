@@ -173,6 +173,25 @@ void DelayExec::inactivate() {
     sei();
 }
 
+void DelayExec::delete_all_tasks() {
+
+    cli(); // vvvvvvvvvv
+
+    Task* ptask = head;
+    while (ptask) {
+        ptask->to_delete = 1;
+        ptask = ptask->next;
+    }
+    ptask = head_pending_add;
+    while (ptask) {
+        ptask->to_delete = 1;
+        ptask = ptask->next;
+    }
+
+    sei(); // ^^^^^^^^^^
+
+}
+
 void DelayExec::commit_pending_changes() {
 
 // We are using the variable commit_pending_changes_underway in order to avoid

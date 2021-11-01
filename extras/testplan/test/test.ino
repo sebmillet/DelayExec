@@ -83,6 +83,17 @@ void loop() {
         serial_printf("Count added: %d, count deleted: %d, count: %d\n",
                 dx.get_count_added(), dx.get_count_deleted(),
                 dx.get_task_count());
+
+#ifdef DELAYEXEC_TEST_RESET
+        if (counter == 7) {
+            dx.inactivate();
+        } else if (counter == 10) {
+            dx.activate();
+        } else if (counter == 14) {
+            dx.delete_all_tasks();
+        }
+#endif
+
         if (counter == 20) {
             serial_printf("----- END TEST -----\n");
         }
